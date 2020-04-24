@@ -42,7 +42,7 @@ function Form(props) {
                 </select>
             </label>
 
-            <label>Pizza Sauce:&nbsp;
+            <label> Pizza Sauce:&nbsp;
                 <select
                     value={values.pizza_sauce}
                     onChange={onInputChange}
@@ -54,26 +54,28 @@ function Form(props) {
                 </select>
             </label>
 
-            <label><input
-                checked={values.toppings.mushrooms}
-                onChange={onCheckboxChange}
-                name='mushrooms'
-                type="checkbox" /> Mushrooms
-            </label>
-            <label><input
-                checked={values.toppings.pepperoni}
-                onChange={onCheckboxChange}
-                name='pepperoni'
-                type="checkbox" /> Pepperoni
-            </label>
-            <label><input
-                checked={values.toppings.sausage}
-                onChange={onCheckboxChange}
-                name='sausage'
-                type="checkbox" /> Sausage
-            </label>
+            <div className='toppings'>
+                <label><input
+                    checked={values.toppings.mushrooms}
+                    onChange={onCheckboxChange}
+                    name='mushrooms'
+                    type="checkbox" /> Mushrooms
+                </label>
+                <label><input
+                    checked={values.toppings.pepperoni}
+                    onChange={onCheckboxChange}
+                    name='pepperoni'
+                    type="checkbox" /> Pepperoni
+                </label>
+                <label><input
+                    checked={values.toppings.sausage}
+                    onChange={onCheckboxChange}
+                    name='sausage'
+                    type="checkbox" /> Sausage
+                </label>
+            </div>
 
-            <label>Special Instructions:&nbsp;
+            <label> Special Instructions:&nbsp;
                 <input
                     value={values.instructions}
                     onChange={onInputChange}

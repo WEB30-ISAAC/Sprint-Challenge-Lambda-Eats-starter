@@ -6,16 +6,7 @@ import './App.css';
 
 import Form from './pizzaForm'
 import User from './pizzaOrder'
-
-// const App = () => {
-//   return (
-//     <>
-//       <h1>Lambda Eats</h1>
-//       <p>You can remove this code and create your own header</p>
-//     </>
-//   );
-// };
-// export default App;
+import Nav from './nav';
 
 const url = 'https://reqres.in/api/users'
 console.log(url)
@@ -157,8 +148,21 @@ export default function App() {
     <div className="App">
       <header className="App-header">
         <h1>Joey Faton's Pizza</h1>
+        <Nav/>
 
         <Switch>
+          <Route path='/pizzaOrder'>
+            <div className='user-container'>
+            {
+              users.map(user => {
+                return(
+                  <User key={user.id} details={user}/>
+                )
+              })
+            }
+            </div>
+          </Route>
+
           <Route path='/'>
             <Form
               values={formValues}
@@ -169,17 +173,6 @@ export default function App() {
               errors={formErrors}
             />
           </Route>
-
-
-        <div className='user-container'>
-        {
-          users.map(user => {
-            return(
-              <User key={user.id} details={user}/>
-            )
-          })
-        }
-        </div>
         </Switch>
 
 

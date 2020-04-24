@@ -41,8 +41,8 @@ describe('form', () => {
         
         cy.get('.user-container')
         .contains(first_name)
-        .next().contains('medium: medium')
-        .next().contains('tomatobased: tomatobased')
+        // .next().contains(sizeStatus2)
+        // .next().contains(sauceStatus2)
     })
 })
 
