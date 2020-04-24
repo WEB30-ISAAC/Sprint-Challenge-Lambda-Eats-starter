@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import * as yup from 'yup'
 import axios from 'axios'
+import './App.css';
 
 import Form from './pizzaForm'
 import User from './pizzaOrder'
@@ -20,41 +21,39 @@ console.log(url)
 
 const initialFormValues = {
   first_name: '',
-  last_name: '',
-  email: '',
-  password: '',
-  tos: false,
+  pizza_size: '',
+  pizza_sauce: '',
+  instructions: '',
+
+  toppings: {
+    mushrooms: false,
+    pepperoni: false,
+    sausage: false,
+  }
 
 }
 
 const initialFormErrors = {
   first_name: '',
-  last_name: '',
-  email: '',
-  password: '',
-  tos: false,
+  pizza_size: '',
+  pizza_sauce: '',
 }
 
 const formSchema = yup.object().shape({
   first_name: yup
     .string()
-    .min(3, 'First Name must be atleast 3 characters')
+    .min(2, 'First Name must be atleast 2 characters')
     .required('Name is required'),
+  instructions: yup
+    .string(),
   pizza_size: yup
     .string()
     .matches(/(medium|large)/, 'either medium or large')
     .required('Pizza size is required'),
-    pizza_sauce: yup
+  pizza_sauce: yup
     .string()
     .matches(/(tomatobased|buffalochicken)/, 'either Tomato based or Buffalo Chicken sauce')
     .required('Pizza sauce is required'),
-  password: yup
-    .string()
-    .min(8, 'Password Must be at least 8 characters long')
-    .required('Password is Required'),
-  tos: yup
-    .boolean().oneOf([true])
-    .required('Must accept Terms of Service')
 })
 
 export default function App() {
@@ -103,9 +102,9 @@ export default function App() {
       first_name: formValues.first_name,
       pizza_size: formValues.pizza_size === 'medium' ? false : true,
       pizza_sauce: formValues.pizza_sauce === 'tomatobased' ? false : true,
-      email: formValues.email,
-      password: formValues.password,
-      tos: Object.keys(formValues.tos)
+      instructions: formValues.instructions,
+      toppings: Object.keys(formValues.toppings)
+        .filter(topping => formValues.toppings[topping] === true)
     }
 
     setFormValues(initialFormValues)
@@ -145,15 +144,18 @@ export default function App() {
     const isChecked = evt.target.checked
 
     setFormValues({
-      ...formValues, 
-      [name]:isChecked
+      ...formValues,
+      toppings: {
+        ...formValues.toppings,
+        [name]: isChecked,
+      }
     })
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>New User Regristration</h1>
+        <h1>Joey Faton's Pizza</h1>
 
         <Form
           values={formValues}

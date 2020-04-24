@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+/*form.js*/
+.container {
+  margin: 2%;
+  padding: 1%;
+  background-color: #61dafb;
+  border-radius: 10px;
+  color: #282c34;
+}
+
+button {
+  margin: 0 1%;
+  border-radius: 4px;
+}
+
+/* .member {
+  display: flex;
+  flex-direction: row;
+  padding: 0 1%;
+  margin: 0 1%;
+} */
+
+input {
+  margin: 0 1%;
+  border-radius: 4px;
+}
+
+
+
+/*user.js*/
+.user {
+  margin: 2%;
+  padding: 1%;
+  background-color: #61dafb;
+  border-radius: 10px;
+  color: #282c34;
+}

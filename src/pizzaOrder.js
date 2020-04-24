@@ -10,19 +10,20 @@ function User({ details }) {
             <h3>Customer Name: {details.first_name}</h3>
             <p>Pizza Size: {details.medium ? 'Medium' : 'Large'}</p>
             <p>Pizza Sauce: {details.tomatobased ? 'Tomato Based Sauce' : 'Buffalo Chicken Sauce'}</p>
+            <p>Special Instructions: {details.instructions}</p>
 
 
-            {/* {
+            {
                 !!details.toppings && !!details.toppings.length &&
                 <div>
-                    Hobbies:
+                    Toppings:
                     <ul>
                         {
                         details.toppings.map((like, idx) => <li key={idx}>{like}</li>)
                         }
                     </ul>
                 </div>
-            } */}
+            }
         </div>
     )
 };

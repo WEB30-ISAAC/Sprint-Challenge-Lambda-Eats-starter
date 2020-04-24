@@ -12,13 +12,11 @@ function Form(props) {
 
     return (
         <form className='container'>
-            <h2>User Form</h2>
+            <h2>Order Pizza Here</h2>
             <div className='errors'>
                 <p>{errors.first_name}</p>
-                {/* <p>{errors.last_name}</p>
-                <p>{errors.email}</p>
-                <p>{errors.password}</p> */}
-                <p>{errors.tos}</p>
+                <p>{errors.pizza_size}</p>
+                <p>{errors.pizza_sauce}</p>
             </div>
 
             <label>Name:&nbsp;
@@ -55,22 +53,33 @@ function Form(props) {
                 </select>
             </label>
 
-            <label>Password:&nbsp;
-                <input
-                    value={values.password}
-                    onChange={onInputChange}
-                    name='password'
-                    type='text'
-                />
+            <label><input
+                checked={values.toppings.mushrooms}
+                onChange={onCheckboxChange}
+                name='mushrooms'
+                type="checkbox" /> Mushrooms
+            </label>
+            <label><input
+                checked={values.toppings.pepperoni}
+                onChange={onCheckboxChange}
+                name='pepperoni'
+                type="checkbox" /> Pepperoni
+            </label>
+            <label><input
+                checked={values.toppings.sausage}
+                onChange={onCheckboxChange}
+                name='sausage'
+                type="checkbox" /> Sausage
             </label>
 
-            <label>
+            <label>Special Instructions:&nbsp;
                 <input
-                    checked={values.tos}
-                    onChange={onCheckboxChange}
-                    name='tos'
-                    type="checkbox" 
-                /> Accept Terms of Service     
+                    value={values.instructions}
+                    onChange={onInputChange}
+                    name='instructions'
+                    type='text'
+                    >
+                </input>
             </label>
 
             <button onClick={onSubmit} disabled={disabled}>submit</button>
