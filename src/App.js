@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Route, Switch} from 'react-router-dom'
 import * as yup from 'yup'
 import axios from 'axios'
 import './App.css';
@@ -157,14 +158,18 @@ export default function App() {
       <header className="App-header">
         <h1>Joey Faton's Pizza</h1>
 
-        <Form
-          values={formValues}
-          onInputChange={onInputChange}
-          onCheckboxChange={onCheckboxChange}
-          onSubmit={onSubmit}
-          disabled={formDisabled}
-          errors={formErrors}
-        />
+        <Switch>
+          <Route path='/'>
+            <Form
+              values={formValues}
+              onInputChange={onInputChange}
+              onCheckboxChange={onCheckboxChange}
+              onSubmit={onSubmit}
+              disabled={formDisabled}
+              errors={formErrors}
+            />
+          </Route>
+
 
         <div className='user-container'>
         {
@@ -175,6 +180,8 @@ export default function App() {
           })
         }
         </div>
+        </Switch>
+
 
       </header>
     </div>
